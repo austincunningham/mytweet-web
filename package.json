@@ -1,0 +1,19 @@
+{
+  "name": "MyTweet-web",
+  "version": "1.0.0",
+  "description": "an application host posts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "austin cunningham",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "hapi": "^15.1.0",
+    "hapi-auth-cookie": "^6.1.1",
+    "inert": "^4.0.2",
+    "mongoose": "^4.6.2",
+    "vision": "^4.1.0"
+  }
+}
