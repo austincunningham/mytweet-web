@@ -3,11 +3,11 @@
  */
 const mongoose = require('mongoose');
 
-const donationSchema = mongoose.Schema({
+const tweetSchema = mongoose.Schema({
   amount: Number,
   method: String,
   donor: String,
 });
 
-const Donation = mongoose.model('Donation', donationSchema);
-module.exports = Donation;
+const Tweet = mongoose.model('Tweet', tweetSchema);
+module.exports = Tweet;

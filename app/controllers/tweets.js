@@ -1,5 +1,5 @@
 'use strict';
-const Donation = require('../models/donation');
+const Tweet = require('../models/tweet');
 
 
 exports.home = {
@@ -10,13 +10,13 @@ exports.home = {
 
 };
 
-exports.donate = {
+exports.tweet = {
 
   handler: function (request, reply) {
     let data = request.payload;
     data.donor = request.auth.credentials.loggedInUser;
-    const donation = new Donation(data);
-    donation.save().then(newDonation => {
+    const tweet = new MyTweet(data);
+    tweet.save().then(newMyTweet => {
       reply.redirect('/report');
     }).catch(err => {
       reply.redirect('/');
@@ -28,10 +28,10 @@ exports.donate = {
 exports.report = {
 
   handler: function (request, reply) {
-    Donation.find({}).exec().then(allDonations => {
+    Donation.find({}).exec().then(allTweets => {
       reply.view('report', {
         title: 'MyTweets to Date',
-        donations: allDonations,
+        donations: allTweets,
       });
     }).catch(err => {
       reply.redirect('/');

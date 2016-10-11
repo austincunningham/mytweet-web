@@ -3,6 +3,7 @@
  */
 'use strict';
 const User = require('../models/user');
+const Joi = require('joi');
 
 exports.main = {
   auth: false,
@@ -33,6 +34,21 @@ exports.login = {
 };
 
 exports.authenticate = {
+  validate: {
+
+    payload: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('login', {
+        title: 'Login error',
+        errors: error.data.details,
+      }).code(400);
+    },
+
+  },
   auth: false,
   handler: function (request, reply) {
     const user = request.payload;
@@ -63,6 +79,23 @@ exports.logout = {
 };
 
 exports.register = {
+  validate: {
+
+    payload: {
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('signup', {
+        title: 'Sign up error',
+        errors: error.data.details,
+      }).code(400);
+    },
+
+  },
   auth: false,
   handler: function (request, reply) {
     const user = new User(request.payload);
@@ -90,6 +123,23 @@ exports.viewSettings = {
 };
 
 exports.updateSettings = {
+  validate: {
+
+    payload: {
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('settings', {
+        title: 'Settings error',
+        errors: error.data.details,
+      }).code(400);
+    },
+
+  },
   handler: function (request, reply) {
     const editedUser = request.payload;
     var loggedInUserEmail = request.auth.credentials.loggedInUser;

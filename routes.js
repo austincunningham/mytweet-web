@@ -1,4 +1,4 @@
-const Donations = require('./app/controllers/donations');
+const Tweets = require('./app/controllers/tweets');
 const Assets = require('./app/controllers/assets');
 const Accounts = require('./app/controllers/accounts');
 
@@ -12,9 +12,9 @@ module.exports = [
   { method: 'POST', path: '/register', config: Accounts.register },
 
 
-  { method: 'GET', path: '/home', config: Donations.home },
-  { method: 'GET', path: '/report', config: Donations.report },
-  { method: 'POST', path: '/donate', config: Donations.donate },
+  { method: 'GET', path: '/home', config: Tweets.home },
+  { method: 'GET', path: '/report', config: Tweets.report },
+  //{ method: 'POST', path: '/donate', config: Tweets.donate },
 
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
