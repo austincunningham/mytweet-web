@@ -10,13 +10,13 @@ exports.home = {
 
 };
 
-exports.tweet = {
+exports.submit = {
 
   handler: function (request, reply) {
     let data = request.payload;
-    data.donor = request.auth.credentials.loggedInUser;
-    const tweet = new MyTweet(data);
-    tweet.save().then(newMyTweet => {
+    data.name = request.auth.credentials.loggedInUser;
+    const tweet = new Tweet(data);
+    tweet.save().then(newTweet => {
       reply.redirect('/report');
     }).catch(err => {
       reply.redirect('/');
@@ -28,10 +28,10 @@ exports.tweet = {
 exports.report = {
 
   handler: function (request, reply) {
-    Donation.find({}).exec().then(allTweets => {
+    Tweet.find({}).exec().then(allTweets => {
       reply.view('report', {
         title: 'MyTweets to Date',
-        donations: allTweets,
+        tweet: allTweets,
       });
     }).catch(err => {
       reply.redirect('/');

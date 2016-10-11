@@ -4,9 +4,8 @@
 const mongoose = require('mongoose');
 
 const tweetSchema = mongoose.Schema({
-  amount: Number,
-  method: String,
-  donor: String,
+  message: String,
+  name: String,
 });
 
 const Tweet = mongoose.model('Tweet', tweetSchema);
