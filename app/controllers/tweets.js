@@ -1,6 +1,6 @@
 'use strict';
 const Tweet = require('../models/tweet');
-
+const Joi = require('joi');
 
 exports.home = {
 
@@ -12,6 +12,23 @@ exports.home = {
 
 exports.submit = {
 
+  validate: {
+
+    payload: {
+      message: Joi.string().max(170),
+    },
+
+    options: {
+      abortEarly: false,
+    },
+
+    failAction: function (request, reply, source, error) {
+      reply.view('home', {
+        title: 'more that 140 characters',
+        errors: error.data.details,
+      }).code(400);
+    },
+  },
   handler: function (request, reply) {
     let data = request.payload;
     data.name = request.auth.credentials.loggedInUser;
