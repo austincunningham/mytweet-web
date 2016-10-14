@@ -1,17 +1,22 @@
-<section class="ui raised segment">
+<section class="ui raised segment" xmlns="http://www.w3.org/1999/html">
         <div class="ui grid">
             <div class="ten wide column">
                 <form action="/tweet" class="ui form" method="post">
                 <div class="ui form">
                     <div class="field">
                         <label>Tweet</label>
-                        <textarea rows="5" name="message"></textarea>
+                        <textarea rows="5" name="message" id="data"
+                                  onkeyup="CharacterCount('data','count');">
+
+                        </textarea>
                     </div>
                 </div>
                 <button  class="ui blue labeled submit icon button">
                     <i class="icon edit"></i> Submit
                 </button>
                 </form>
+                <h1 class="ui header"><span id="count">140</span> characters left</h1>
+                {{> formerror }}
             </div>
             <section class="ui segment">
                 <aside class="ui six wide column">
@@ -20,3 +25,4 @@
             </section>
         </div>
 </section>
+<script src="js/characterCount.js"></script>
