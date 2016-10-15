@@ -57,41 +57,40 @@ exports.report = {
 
 };
 
+
+
+
+
 exports.delete = {
   handler: function (req, res) {
-    const id = Object.keys(req.payload);
-    console.log(id);
-    Tweet.findOneAndRemove({ _id: id}, function (err, tweet) {
-      if (err) {
-        return res({
-          error: 'Error reading tweet: ' + err,
-        });
-      }
+    for (let i = 0; i < Object.keys(req.payload).length; i++) {
+      let id = Object.keys(req.payload)[i];
+      console.log (Object.keys(req.payload).length)
+      console.log(id, i);
+      Tweet.findOneAndRemove({_id: id}, function (err, tweet) {
+        if (err) {
+          return res({
+            error: 'Error reading tweet: ' + err,
+          });
+        }
 
-      if (!tweet) {
-        return res({message: '404 not found'});
-      }
+        if (!tweet) {
+          return res({message: '404 not found'});
+        }
 
-      //res({ message: `deleted tweet ${req.params.id}` });
-      res.redirect('/report');
-    });
+        //res({ message: `deleted tweet ${req.params.id}` });
+        if (i  == Object.keys(req.payload).length -1) {
+           res.redirect('/report');
+        }
+      });
+    }
   }
 };
 
 
 
-/*exports.delete = {
-  handler: function (request, response) {
-    const id = Object.keys(request.payload);
-    console.log(id);
-    Tweet.findByIdAndRemove({_id: id}, function (err, doc) {
-      if (err) {
-        return err
-      };
-      response.doc;
-    });
-  },
-};*/
+
+
 
 
 
