@@ -15,6 +15,7 @@ module.exports = [
   { method: 'GET', path: '/home', config: Tweets.home },
   { method: 'GET', path: '/report', config: Tweets.report },
   { method: 'POST', path: '/tweet', config: Tweets.submit },
+  { method: 'POST', path: '/delete', config: Tweets.delete },
 
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
