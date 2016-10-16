@@ -83,19 +83,26 @@ exports.finduser = {
 exports.findusersearch = {
 
   handler: function (request, reply) {
-    var findUserEmail = request.payload.name;
-    console.log("do i ever get here?"+findUserEmail);
-    Tweet.find({name: findUserEmail}).exec().then(allTweets => {
-      reply.view('finduser', {
-        title: 'MyTweets by Tweeter',
-        tweet: allTweets,
+      var findUserEmail = request.payload.name;
+      console.log("do i ever get here?" + findUserEmail);
+      Tweet.find({name: findUserEmail}).exec().then(allTweets => {
+        if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
+          reply.view('adminhome', {
+            title: 'Administrator',
+            tweet: allTweets,
+          });
+        } else{
+        reply.view('finduser', {
+          title: 'MyTweets by Tweeter',
+          tweet: allTweets,
+        });
+        }
+      }).catch(err => {
+        reply.redirect('/');
       });
-    }).catch(err => {
-      reply.redirect('/');
-    });
-  },
-
+    },
 };
+
 
 exports.delete = {
   handler: function (req, res) {
@@ -116,14 +123,18 @@ exports.delete = {
 
         //res({ message: `deleted tweet ${req.params.id}` });
         //can't render report every time
+        // using the same function for admin delete 
         if (i  == Object.keys(req.payload).length -1) {
-           res.redirect('/mytweetlist');
+          if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
+            res.redirect('/adminhome');
+          } else {
+            res.redirect('/mytweetlist');
+          }
         }
       });
     }
   }
 };
-
 
 
 

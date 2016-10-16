@@ -1,0 +1,5 @@
+.background {
+    background-image: url(background.jpg), url(paper.gif);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+}

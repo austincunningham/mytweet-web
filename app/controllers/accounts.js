@@ -3,7 +3,7 @@
  */
 'use strict';
 const User = require('../models/user');
-const Admin = require('../models/admin');
+const Tweet = require('../models/tweet')
 const Joi = require('joi');
 
 exports.main = {
@@ -17,12 +17,16 @@ exports.main = {
 exports.adminhome = {
   handler: function (request, reply) {
     if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
-      reply.view('adminhome', {title: 'Welcome to Administrator MyTweet'});
-    } else {
-      reply.redirect('/');
-    }
+      User.find({}).exec().then(allUser => {
+        reply.view('adminhome', {
+          title: 'Welcome to Administrator MyTweet',
+          user: allUser,
+        });
+      }).catch(err => {
+        reply.redirect('/');
+      });
+    };
   },
-
 };
 
 exports.signup = {
