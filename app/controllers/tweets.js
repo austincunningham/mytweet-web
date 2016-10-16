@@ -19,7 +19,7 @@ exports.submit = {
     },
 
     options: {
-      abortEarly: false,
+      abortEarly: true,
     },
 
     failAction: function (request, reply, source, error) {
@@ -34,7 +34,7 @@ exports.submit = {
     data.name = request.auth.credentials.loggedInUser;
     const tweet = new Tweet(data);
     tweet.save().then(newTweet => {
-      reply.redirect('/report');
+      reply.redirect('/mytweetlist');
     }).catch(err => {
       reply.redirect('/');
     });
@@ -61,7 +61,7 @@ exports.mytweetlist = {
   handler: function (request, reply) {
     var loggedInUserEmail = request.auth.credentials.loggedInUser;
     Tweet.find({name: loggedInUserEmail}).exec().then(allTweets => {
-      reply.view('report', {
+      reply.view('mytweetlist', {
         title: 'MyTweets to Date',
         tweet: allTweets,
       });
@@ -92,7 +92,7 @@ exports.delete = {
         //res({ message: `deleted tweet ${req.params.id}` });
         //can't render report every time
         if (i  == Object.keys(req.payload).length -1) {
-           res.redirect('/report');
+           res.redirect('/mytweetlist');
         }
       });
     }

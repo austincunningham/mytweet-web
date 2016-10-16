@@ -9,7 +9,6 @@
                 <tr>
                     <th>Tweet</th>
                     <th>Name</th>
-                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -17,21 +16,10 @@
                     <tr>
                         <td> {{message}} </td>
                         <td> {{name}} </td>
-                        <td>
-                            <form action="/delete" method="post">
-                                <div class="ui checkbox">
-                                    <input name="{{_id}}" type="checkbox">
-                                    <label>Delete</label>
-                                </div>
-                        </td>
                     </tr>
                 {{/each}}
                 </tbody>
             </table>
-            <button  class="ui blue labeled submit icon button">
-                <i class="icon trash"></i> Delete Selected
-            </button>
-            </form>
         </article>
     </div>
 </section>
