@@ -123,10 +123,10 @@ exports.delete = {
 
         //res({ message: `deleted tweet ${req.params.id}` });
         //can't render report every time
-        // using the same function for admin delete 
+        // using the same function for admin delete
         if (i  == Object.keys(req.payload).length -1) {
-          if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
-            res.redirect('/adminhome');
+          if (req.auth.credentials.loggedInUser == 'admin@mytweet.com') {
+           res.redirect('/adminhome');
           } else {
             res.redirect('/mytweetlist');
           }

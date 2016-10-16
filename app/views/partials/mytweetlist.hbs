@@ -18,6 +18,7 @@
             <td> {{message}} </td>
             <td> {{name}} </td>
             <td>
+                <form action="/delete" method="POST">
                 <div class="ui checkbox">
                     <input name="{{_id}}" type="checkbox">
                     <label>Delete</label>
