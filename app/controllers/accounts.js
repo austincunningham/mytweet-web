@@ -3,12 +3,24 @@
  */
 'use strict';
 const User = require('../models/user');
+const Admin = require('../models/admin');
 const Joi = require('joi');
 
 exports.main = {
   auth: false,
   handler: function (request, reply) {
     reply.view('main', { title: 'Welcome to MyTweet' });
+  },
+
+};
+
+exports.adminhome = {
+  handler: function (request, reply) {
+    if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
+      reply.view('adminhome', {title: 'Welcome to Administrator MyTweet'});
+    } else {
+      reply.redirect('/');
+    }
   },
 
 };
@@ -52,6 +64,13 @@ exports.authenticate = {
   auth: false,
   handler: function (request, reply) {
     const user = request.payload;
+    if (user.email == 'admin@mytweet.com' && user.password == 'secret') {
+      request.cookieAuth.set({
+        loggedIn: true,
+        loggedInUser: user.email,
+      });
+      reply.redirect('/adminhome');
+    }
     User.findOne({ email: user.email }).then(foundUser => {
       if (foundUser && foundUser.password === user.password) {
         request.cookieAuth.set({
@@ -66,7 +85,6 @@ exports.authenticate = {
       reply.redirect('/');
     });
   },
-
 };
 
 exports.logout = {

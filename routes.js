@@ -10,6 +10,7 @@ module.exports = [
   { method: 'POST', path: '/login', config: Accounts.authenticate },
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'POST', path: '/register', config: Accounts.register },
+  { method: 'GET', path: '/adminhome', config:Accounts.adminhome },
 
 
   { method: 'GET', path: '/home', config: Tweets.home },
