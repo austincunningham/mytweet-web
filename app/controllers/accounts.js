@@ -40,6 +40,34 @@ exports.signup = {
 
 };
 
+exports.deleteUser ={
+  handler: function (req, res) {
+    const email = req.payload.deleteUser;
+    console.log (req.payload);
+    User.findOneAndRemove({email: email}, function (err, tweet) {
+      if (err) {
+        return res({
+          error: 'Error reading tweet: ' + err,
+        });
+      }
+
+      if (!tweet) {
+        return res({message: '404 not found'});
+      }
+
+      //res({ message: `deleted tweet ${req.params.id}` });
+      //can't render report every time
+      // using the same function for admin delete
+      User.find({}).exec().then(allUser => {
+        res.view('adminhome', {
+          title: 'Welcome to Administrator MyTweet',
+          user: allUser,
+        });
+      })
+    });
+  }
+}
+
 exports.login = {
   auth: false,
   handler: function (request, reply) {

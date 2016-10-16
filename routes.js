@@ -11,6 +11,7 @@ module.exports = [
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/adminhome', config:Accounts.adminhome },
+  { method: 'POST', path: '/deleteUser', config:Accounts.deleteUser },
 
 
   { method: 'GET', path: '/home', config: Tweets.home },
