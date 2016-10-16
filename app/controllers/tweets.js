@@ -56,10 +56,11 @@ exports.report = {
   },
 
 };
-exports.alltweetlist = {
+exports.mytweetlist = {
 
   handler: function (request, reply) {
-    Tweet.find({}).exec().then(allTweets => {
+    var loggedInUserEmail = request.auth.credentials.loggedInUser;
+    Tweet.find({name: loggedInUserEmail}).exec().then(allTweets => {
       reply.view('report', {
         title: 'MyTweets to Date',
         tweet: allTweets,
