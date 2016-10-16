@@ -43,7 +43,7 @@ exports.submit = {
 };
 
 exports.report = {
-
+  auth: false,
   handler: function (request, reply) {
     Tweet.find({}).exec().then(allTweets => {
       reply.view('report', {
@@ -72,7 +72,7 @@ exports.mytweetlist = {
 
 };
 
-exports.finduserlist = {
+exports.finduser = {
 
   handler: function (request, reply) {
     reply.view('finduser', { title: 'Search for user Tweets' });
@@ -83,7 +83,8 @@ exports.finduserlist = {
 exports.findusersearch = {
 
   handler: function (request, reply) {
-    var findUserEmail = request.payload;
+    var findUserEmail = request.payload.name;
+    console.log("do i ever get here?"+findUserEmail);
     Tweet.find({name: findUserEmail}).exec().then(allTweets => {
       reply.view('finduser', {
         title: 'MyTweets by Tweeter',
