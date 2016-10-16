@@ -149,14 +149,13 @@ exports.register = {
   auth: false,
   handler: function (request, reply) {
     const user = new User(request.payload);
-
     user.save().then(newUser => {
-      reply.redirect('/login');
+        reply.redirect('/login');
     }).catch(err => {
+      //console.log(request.auth.credentials.loggedInUser);
       reply.redirect('/');
     });
   },
-
 };
 
 exports.viewSettings = {

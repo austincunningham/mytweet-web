@@ -10,10 +10,10 @@
 
 
 <div class="ui grid">
-    <div class="two column row">
+    <section class="two column row">
 
         <div class="column">
-            <h2 class="ui dividing header">Register new User</h2>
+            <h3 class="ui dividing header">Register new User</h3>
             <section class="ui raised segment">
                 <div class="ui grid">
                     <div class="ui ten wide column">
@@ -47,7 +47,7 @@
         </div>
 
         <section class="column">
-            <h2 class="ui dividing header">Delete User</h2>
+            <h3 class="ui dividing header">Delete User</h3>
             <section class="ui rasied form segment user">
                 <div class="two fields">
                     <div class="field">
@@ -70,19 +70,21 @@
                 </form>
         </section>
 
-    </div>
+    </section>
 </div>
 
-<div class="ui grid">
+<section class="ui rasied segment">
 
-    <div class="four wide column">
-        <h2 class="ui dividing header">Search for User Tweets to Delete</h2>
-            {{> findusersearch}}
+    <div class="ui grid">
+
+        <div class="four wide column">
+            <h3 class="ui dividing header">Search for User Tweets to Delete</h3>
+                {{> findusersearch}}
+        </div>
+
+        <div class="twelve wide column">
+            {{> mytweetlist}}
+        </div>
+
     </div>
-
-    <div class="twelve wide column">
-        {{> mytweetlist}}
-    </div>
-
-</div>
-
+</section>
