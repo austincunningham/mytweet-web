@@ -58,9 +58,6 @@ exports.report = {
 };
 
 
-
-
-
 exports.delete = {
   handler: function (req, res) {
     for (let i = 0; i < Object.keys(req.payload).length; i++) {
