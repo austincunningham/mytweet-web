@@ -56,7 +56,20 @@ exports.report = {
   },
 
 };
+exports.alltweetlist = {
 
+  handler: function (request, reply) {
+    Tweet.find({}).exec().then(allTweets => {
+      reply.view('report', {
+        title: 'MyTweets to Date',
+        tweet: allTweets,
+      });
+    }).catch(err => {
+      reply.redirect('/');
+    });
+  },
+
+};
 
 exports.delete = {
   handler: function (req, res) {
@@ -76,6 +89,7 @@ exports.delete = {
         }
 
         //res({ message: `deleted tweet ${req.params.id}` });
+        //can't render report every time
         if (i  == Object.keys(req.payload).length -1) {
            res.redirect('/report');
         }

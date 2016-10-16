@@ -1,0 +1,38 @@
+<section class="ui raised segment">
+    <div class="ui grid">
+        <aside class="three wide column">
+            <img src="images/tweetLogo.png" class="ui small image">
+        </aside>
+        <article class="thirteen wide column">
+            <table class="ui fixed inverted blue celled table segment">
+                <thead>
+                <tr>
+                    <th>Tweet</th>
+                    <th>Name</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each tweet}}
+                    <tr>
+                        <td> {{message}} </td>
+                        <td> {{name}} </td>
+                        <td>
+                            <form action="/delete" method="post">
+                                <div class="ui checkbox">
+                                    <input name="{{_id}}" type="checkbox">
+                                    <label>Delete</label>
+                                </div>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            <button  class="ui blue labeled submit icon button">
+                <i class="icon trash"></i> Delete Selected
+            </button>
+            </form>
+        </article>
+    </div>
+</section>
+<script src="js/checkbox.js"></script>
