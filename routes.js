@@ -15,6 +15,8 @@ module.exports = [
   { method: 'GET', path: '/home', config: Tweets.home },
   { method: 'GET', path: '/report', config: Tweets.report },
   { method: 'GET', path: '/mytweetlist', config: Tweets.mytweetlist },
+  { method: 'GET', path: '/finduser', config: Tweets.finduserlist },
+  { method: 'POST', path: '/finduser', config: Tweets.findusersearch },
   { method: 'POST', path: '/tweet', config: Tweets.submit },
   { method: 'POST', path: '/delete', config: Tweets.delete },
 

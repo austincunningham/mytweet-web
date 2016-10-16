@@ -72,6 +72,30 @@ exports.mytweetlist = {
 
 };
 
+exports.finduserlist = {
+
+  handler: function (request, reply) {
+    reply.view('finduser', { title: 'Search for user Tweets' });
+  },
+
+};
+
+exports.findusersearch = {
+
+  handler: function (request, reply) {
+    var findUserEmail = request.payload;
+    Tweet.find({name: findUserEmail}).exec().then(allTweets => {
+      reply.view('finduser', {
+        title: 'MyTweets by Tweeter',
+        tweet: allTweets,
+      });
+    }).catch(err => {
+      reply.redirect('/');
+    });
+  },
+
+};
+
 exports.delete = {
   handler: function (req, res) {
     for (let i = 0; i < Object.keys(req.payload).length; i++) {
