@@ -1,0 +1,63 @@
+{
+  "users": {
+    "_model": "User",
+    "admin": {
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@mytweet.com",
+      "password": "secret"
+    },
+    "homer" : {
+      "firstName":"Homer",
+      "lastName":"Simpson",
+      "email":"homer@simpson.com",
+      "password":"secret"
+    },
+    "marge" : {
+      "firstName":"Marge",
+      "lastName":"Simpson",
+      "email":"marge@simpson.com",
+      "password":"secret"
+    },
+    "bart" : {
+      "firstName":"bart",
+      "lastName":"Simpson",
+      "email":"bart@simpson.com",
+      "password":"secret"
+    },
+    "lisa" : {
+      "firstName":"Lisa",
+      "lastName":"Simpson",
+      "email":"lisa@simpson.com",
+      "password":"secret"
+    }
+  },
+  "tweets": {
+    "_model": "Tweet",
+    "one": {
+      "message": "Administrators tweet",
+      "name": "admin@mytweet.com",
+      "tweeter": "->users.admin"
+    },
+    "two": {
+      "message": "Homers tweet",
+      "name": "homer@simpson.com",
+      "tweeter": "->users.homer"
+    },
+    "three": {
+      "message": "Marges tweet",
+      "name": "marge@simpson.com",
+      "tweeter": "->users.marge"
+    },
+    "four": {
+      "message": "Barts tweet",
+      "name": "bart@simpson.com",
+      "tweeter": "->users.bart"
+    },
+    "five": {
+      "message": "Lisa's tweet",
+      "name": "lisa@simpson.com",
+      "tweeter": "->users.lisa"
+    }
+  }
+}

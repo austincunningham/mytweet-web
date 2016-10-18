@@ -40,6 +40,8 @@ exports.signup = {
 
 };
 
+
+//should delete user and tweets
 exports.deleteUser ={
   handler: function (req, res) {
     const email = req.payload.deleteUser;

@@ -51,6 +51,7 @@ exports.report = {
         tweet: allTweets,
       });
     }).catch(err => {
+      console.log(err);
       reply.redirect('/');
     });
   },
@@ -60,16 +61,16 @@ exports.mytweetlist = {
 
   handler: function (request, reply) {
     var loggedInUserEmail = request.auth.credentials.loggedInUser;
-    Tweet.find({name: loggedInUserEmail}).exec().then(allTweets => {
+    Tweet.find({name : loggedInUserEmail}).exec().then(allTweets => {
       reply.view('mytweetlist', {
         title: 'MyTweets to Date',
         tweet: allTweets,
       });
     }).catch(err => {
+      console.log(err);
       reply.redirect('/');
     });
   },
-
 };
 
 exports.finduser = {
@@ -85,7 +86,7 @@ exports.findusersearch = {
   handler: function (request, reply) {
       var findUserEmail = request.payload.name;
       console.log("do i ever get here?" + findUserEmail);
-      Tweet.find({name: findUserEmail}).exec().then(allTweets => {
+      Tweet.find({name: findUserEmail}).populate(tweeter).then(allTweets => {
         if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
           reply.view('adminhome', {
             title: 'Administrator',
