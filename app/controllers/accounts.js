@@ -17,10 +17,10 @@ exports.main = {
 exports.adminhome = {
   handler: function (request, reply) {
     if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
-      User.find({}).exec().then(allUser => {
+      Tweet.find({}).populate('tweeter').then(allTweet => {
         reply.view('adminhome', {
           title: 'Welcome to Administrator MyTweet',
-          user: allUser,
+          user: allTweet,
         });
       }).catch(err => {
         reply.redirect('/');
