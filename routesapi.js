@@ -10,5 +10,5 @@ module.exports = [
   { method: 'GET', path:'/api/users/{id}', config:UserApi.findOne },
 
   { method: 'GET', path:'/api/tweets', config:TweetApi.find },
-
+  { method: 'GET', path:'/api/tweets/{id}', config:TweetApi.findUserTweets },
 ]

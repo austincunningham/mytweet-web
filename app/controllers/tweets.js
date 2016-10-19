@@ -1,5 +1,6 @@
 'use strict';
 const Tweet = require('../models/tweet');
+const User = require('../models/user');
 const Joi = require('joi');
 
 exports.home = {
@@ -32,15 +33,17 @@ exports.submit = {
   handler: function (request, reply) {
     let data = request.payload;
     data.name = request.auth.credentials.loggedInUser;
-    const tweet = new Tweet(data);
-    tweet.save().then(newTweet => {
+    User.find({email: data.name}).then(foundUser => {
+      data.tweeter = foundUser[0]._id;
+      const tweet = new Tweet(data);
+      tweet.save()
+    }).then(newTweet => {
       reply.redirect('/mytweetlist');
     }).catch(err => {
       reply.redirect('/');
     });
   },
-
-};
+}
 
 exports.report = {
   auth: false,
@@ -55,6 +58,7 @@ exports.report = {
       reply.redirect('/');
     });
   },
+
 
 };
 exports.mytweetlist = {
@@ -87,17 +91,11 @@ exports.findusersearch = {
       var findUserEmail = request.payload.name;
       console.log("do i ever get here?" + findUserEmail);
       Tweet.find({name: findUserEmail}).populate(tweeter).then(allTweets => {
-        if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
-          reply.view('adminhome', {
-            title: 'Administrator',
-            tweet: allTweets,
-          });
-        } else{
         reply.view('finduser', {
           title: 'MyTweets by Tweeter',
           tweet: allTweets,
         });
-        }
+
       }).catch(err => {
         reply.redirect('/');
       });
@@ -109,7 +107,7 @@ exports.delete = {
   handler: function (req, res) {
     for (let i = 0; i < Object.keys(req.payload).length; i++) {
       let id = Object.keys(req.payload)[i];
-      console.log (Object.keys(req.payload).length)
+      console.log (Object.keys(req.payload).length);
       console.log(id, i);
       Tweet.findOneAndRemove({_id: id}, function (err, tweet) {
         if (err) {
@@ -126,11 +124,8 @@ exports.delete = {
         //can't render report every time
         // using the same function for admin delete
         if (i  == Object.keys(req.payload).length -1) {
-          if (req.auth.credentials.loggedInUser == 'admin@mytweet.com') {
-           res.redirect('/adminhome');
-          } else {
             res.redirect('/mytweetlist');
-          }
+
         }
       });
     }

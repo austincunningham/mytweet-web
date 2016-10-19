@@ -13,7 +13,21 @@ exports.find = {
     Tweet.find({}).exec().then(tweets => {
       res(tweets);
     }).catch(err =>{
-      reply(Boom.badImplemetation('error accessing Mongo db'))
+      reply(Boom.badImplemetation('error accessing Mongo db'));
     });
   },
 };
+
+exports.findUserTweets = {
+  auth: false,
+
+  handler: function (req, res) {
+    Tweet.find({tweeter: req.params.id}).then(tweets => {
+      console.log(tweets);
+      res(tweets);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
+    });
+  },
+};
+

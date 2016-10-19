@@ -22,14 +22,13 @@ exports.findOne = {
   auth: false,
 
   handler: function(req, res) {
-    console.log(req.body);
     User.findOne({_id: req.params.id}).then(user =>{
-      if(!user){
-        return res.status(404).end();
-      }
-      res(user);
-    }).catch (err => {
-      res(Boom.notFound('id not found'))
-    });
-  },
+  if(!user){
+    return res.status(404).end();
+  }
+  res(user);
+}).catch (err => {
+  res(Boom.notFound('id not found'))
+});
+},
 };

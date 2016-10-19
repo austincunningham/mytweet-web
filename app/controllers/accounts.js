@@ -3,7 +3,7 @@
  */
 'use strict';
 const User = require('../models/user');
-const Tweet = require('../models/tweet')
+const Tweet = require('../models/tweet');
 const Joi = require('joi');
 
 exports.main = {
@@ -25,7 +25,7 @@ exports.adminhome = {
       }).catch(err => {
         reply.redirect('/');
       });
-    };
+    }
   },
 };
 
@@ -65,10 +65,10 @@ exports.deleteUser ={
           title: 'Welcome to Administrator MyTweet',
           user: allUser,
         });
-      })
+    })
     });
   }
-}
+};
 
 exports.login = {
   auth: false,
