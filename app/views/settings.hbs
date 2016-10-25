@@ -1,5 +1,7 @@
 {{> mainmenu _id="settings" }}
 
+
+
 <section class="ui raised segment">
     <div class="ui grid">
         <div class="ui ten wide column">
@@ -30,7 +32,16 @@
             </div>
         </div>
         <aside class="ui five wide column">
-            <img src="images/homer3.png" class="ui medium image">
+            <div class="ui column">
+                <div class="ui medium image">
+                   <img src="/getUserPic">
+                </div>
+                <form action="/userPicUpload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="img" />
+                    <input class="ui blue submit button" type="submit" name="submit" value="upload" />
+                </form>
+            </div>
         </aside>
     </div>
 </section>
+

@@ -6,12 +6,15 @@ module.exports = [
 
   { method: 'GET', path: '/', config: Accounts.main },
   { method: 'GET', path: '/signup', config: Accounts.signup },
+
   { method: 'GET', path: '/login', config: Accounts.login },
   { method: 'POST', path: '/login', config: Accounts.authenticate },
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'POST', path: '/register', config: Accounts.register },
   { method: 'GET', path: '/adminhome', config:Accounts.adminhome },
   { method: 'POST', path: '/deleteUser', config:Accounts.deleteUser },
+  { method: 'POST', path: '/userPicUpload', config: Accounts.userPicUpload},
+  { method: 'GET', path: '/getUserPic', config: Accounts.getUserPic },
 
 
   { method: 'GET', path: '/home', config: Tweets.home },
@@ -30,6 +33,7 @@ module.exports = [
     config: { auth: false },
     handler: Assets.servePublicDirectory,
   },
+
 
 ];
 

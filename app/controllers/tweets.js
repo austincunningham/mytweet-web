@@ -90,7 +90,7 @@ exports.findusersearch = {
   handler: function (request, reply) {
       var findUserEmail = request.payload.name;
       console.log("do i ever get here?" + findUserEmail);
-      Tweet.find({name: findUserEmail}).populate(tweeter).then(allTweets => {
+      Tweet.find({name: findUserEmail}).exec().then(allTweets => {
         reply.view('finduser', {
           title: 'MyTweets by Tweeter',
           tweet: allTweets,

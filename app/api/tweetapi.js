@@ -18,10 +18,12 @@ exports.find = {
   },
 };
 
-exports.findUserTweets = {
+
+exports.findUserTweetById = {
   auth: false,
 
   handler: function (req, res) {
+    console.log(req.name);
     Tweet.find({tweeter: req.params.id}).then(tweets => {
       console.log(tweets);
       res(tweets);
@@ -31,3 +33,42 @@ exports.findUserTweets = {
   },
 };
 
+
+exports.findUserTweetByEmail = {
+  auth: false,
+
+  handler: function (req, res) {
+    Tweet.find({name: req.params.email}).then(tweets => {
+      res(tweets);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
+    });
+  },
+};
+
+
+exports.delete = {
+  auth: false,
+  handler: function(req, res) {
+    Tweet.findOneAndRemove({ _id: req.params.id }, function (err, tweet) {
+      if (err) {
+        return (Boom.resbadImplemetation('error accessing Mongo db'));
+      }
+
+      if (!tweet) {
+        res(Boom.notFound('id not found'));
+      }
+
+      res(tweet);
+    });
+  }
+};
+
+/*exports.deleteAll = {
+  auth: false,
+  handler: function(req, res){
+    Tweet.find({}).exec().then(tweets => {
+
+    }
+
+}*/

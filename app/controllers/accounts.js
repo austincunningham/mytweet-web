@@ -6,6 +6,7 @@ const User = require('../models/user');
 const Tweet = require('../models/tweet');
 const Joi = require('joi');
 
+
 exports.main = {
   auth: false,
   handler: function (request, reply) {
@@ -28,6 +29,37 @@ exports.adminhome = {
     }
   },
 };
+
+exports.userPicUpload = {
+  payload: {
+    maxBytes: 209715200,
+    output: 'stream',
+    parse: true,
+    allow: 'multipart/form-data'
+  },
+  handler: function (req, res) {
+    var data = req.payload.img;
+    var userEmail = req.auth.credentials.loggedInUser;
+    User.findOne({email: userEmail}).then(user => {
+      user.img.data = data._data;
+      user.img.contentType = 'image/jpeg';
+      user.save((err, user) => {
+        res.redirect('/settings')
+      });
+    });
+  }
+}
+
+exports.getUserPic = {
+  handler : function (req ,res) {
+    //console.log(req.payload);
+    var userEmail = req.auth.credentials.loggedInUser;
+    User.findOne({email: userEmail}).then(user => {
+      //console.log(user.img.data);
+      res(user.img.data).type('image');
+    });
+  }
+}
 
 exports.signup = {
   auth: false,

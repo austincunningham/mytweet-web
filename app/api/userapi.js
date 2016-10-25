@@ -20,15 +20,31 @@ exports.find = {
 
 exports.findOne = {
   auth: false,
-
   handler: function(req, res) {
     User.findOne({_id: req.params.id}).then(user =>{
-  if(!user){
-    return res.status(404).end();
-  }
-  res(user);
-}).catch (err => {
-  res(Boom.notFound('id not found'))
-});
-},
+    if(!user){
+      return res.status(404).end();
+    }
+      res(user);
+    }).catch (err => {
+      res(Boom.notFound('id not found'));
+    });
+  },
 };
+//
+exports.delete = {
+  auth: false,
+  handler: function(req, res) {
+    User.findOneAndRemove({ _id: req.params.id }, function (err, user) {
+      if (err) {
+        return (Boom.resbadImplemetation('error accessing Mongo db'));
+      }
+
+      if (!user) {
+        res(Boom.notFound('id not found'));
+      }
+
+      res(user);
+    });
+  }
+}

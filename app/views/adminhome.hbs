@@ -79,12 +79,61 @@
 
         <div class="four wide column">
             <h3 class="ui dividing header">Search for User Tweets to Delete</h3>
-                {{> findusersearch}}
+            <div class="ui rasied segment">
+                <div class="ui right icon input field">
+                    <input placeholder="Email Address" type="text" name="email" id="email" class="search-input">
+                     <i class="user icon"></i>
+                </div>
+                <div>
+                <button class="ui blue submit button" id="search_btn" >Search <i class="search icon"></i></button>
+                </div>
+            </div>
         </div>
 
         <div class="twelve wide column">
-            {{> mytweetlist}}
+
+            <section class="ui raised segment">
+                <div class="ui grid">
+                    <aside class="three wide column">
+                        <img src="images/tweetLogo.png" class="ui small image">
+                    </aside>
+                    <article class="thirteen wide column">
+                        <table class="ui fixed inverted blue celled table segment" id="tweet_table">
+                            <thead>
+                            <tr>
+                                <th>Tweet</th>
+                                <th>Name</th>
+                                <th>Check to select all for Deletion
+                                    <input type="checkbox" name="selectAll" id="selectAll" />
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form action="/delete" method="POST">
+                                            <div class="ui checkbox">
+                                                <input name="{{_id}}" type="checkbox">
+                                                <label>Delete</label>
+                                            </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button  class="ui blue labeled submit icon button">
+                            <i class="icon trash"></i> Delete Selected
+                        </button>
+                        </form>
+                    </article>
+                </div>
+            </section>
+
+
+
+
         </div>
 
     </div>
 </section>
+<script src="js/checkbox.js"></script>
+<script src="js/useApi.js"></script>
