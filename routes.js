@@ -15,6 +15,7 @@ module.exports = [
   { method: 'POST', path: '/deleteUser', config:Accounts.deleteUser },
   { method: 'POST', path: '/userPicUpload', config: Accounts.userPicUpload},
   { method: 'GET', path: '/getUserPic', config: Accounts.getUserPic },
+  { method: 'GET', path: '/getUserPic/{id}', config:Accounts.getUserPicId },
 
 
   { method: 'GET', path: '/home', config: Tweets.home },

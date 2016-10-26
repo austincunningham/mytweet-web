@@ -7,6 +7,7 @@
             <table class="ui fixed inverted blue celled table segment">
                 <thead>
                 <tr>
+                    <th> <img src="images/noUserPic.jpg" class = 'ui avatar image'>Avatar</th>
                     <th>Tweet</th>
                     <th>Name</th>
                 </tr>
@@ -14,6 +15,8 @@
                 <tbody>
                 {{#each tweet}}
                     <tr>
+                        <td><img src='/getUserPic/{{{tweeter}}}' class='ui avatar image' onerror="this.src = 'images/noUserPic.jpg';" /></td>
+                        <!--<td> <img src = '/getUserPic/{{{tweeter}}}' class="ui avatar image"  ></td>-->
                         <td> {{message}} </td>
                         <td> {{name}} </td>
                     </tr>

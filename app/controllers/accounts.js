@@ -61,6 +61,19 @@ exports.getUserPic = {
   }
 }
 
+exports.getUserPicId = {
+  handler : function (req ,res) {
+    console.log(req.params.id);
+    const id = req.params.id;
+    console.log (id);
+    //var userEmail = req.auth.credentials.loggedInUser;
+    User.findOne({_id: id}).then(user => {
+      //console.log(user.img.data);
+      res(user.img.data).type('image');
+    });
+  }
+}
+
 exports.signup = {
   auth: false,
   handler: function (request, reply) {
