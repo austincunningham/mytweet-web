@@ -87,7 +87,7 @@
                      <i class="user icon"></i>
                 </div>
                 <div>
-                <button class="ui blue submit button" id="search_btn" >Search <i class="search icon"></i></button>
+                <button class="ui blue submit button" onclick="searchUserTweets()" id="search_btn" >Search <i class="search icon"></i></button>
                 </div>
             </div>
         </div>
@@ -110,22 +110,11 @@
                                 </th>
                             </tr>
                             </thead>
-                            <tbody class="tweet_table">
-                                <tr>
-                                    <td>
-                                        <form action="/delete" method="POST">
-                                            <div class="ui checkbox">
-                                                <input name="{{_id}}" type="checkbox">
-                                                <label>Delete</label>
-                                            </div>
-                                    </td>
-                                </tr>
+                            <tbody class="tablebody">
                             </tbody>
                         </table>
-                        <button  class="ui blue labeled submit icon button">
-                            <i class="icon trash"></i> Delete Selected
-                        </button>
-                        </form>
+                        <button class="ui blue button" type="button" onclick="delSelectedTweets()"><i class="trash icon"></i>Delete Selected</button>
+                        <button class="ui blue button" type="button" onclick="clearTable()"><i class="delete icon"></i>clear the table</button>
                     </article>
                 </div>
             </section>
