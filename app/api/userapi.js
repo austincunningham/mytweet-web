@@ -31,7 +31,7 @@ exports.findOne = {
     });
   },
 };
-//
+
 exports.delete = {
   auth: false,
   handler: function(req, res) {
@@ -48,3 +48,17 @@ exports.delete = {
     });
   }
 }
+
+exports.findUserByEmail = {
+  auth: false,
+
+  handler: function (req, res) {
+    console.log(req.params.email);
+    User.findOne({email: req.params.email}).then(user => {
+      console.log(user.firstName);
+      res(user);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
+    });
+  },
+};
