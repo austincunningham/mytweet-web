@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "an application host posts",
   "main": "index.js",
+  "engines": {
+    "node": "5.11.1"
+  },
   "scripts": {
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
