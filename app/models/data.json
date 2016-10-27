@@ -50,7 +50,7 @@
       "tweeter": "->users.marge"
     },
     "four": {
-      "message": "Barts tweet",
+      "message": "0 Barts tweet",
       "name": "bart@simpson.com",
       "tweeter": "->users.bart"
     },
@@ -58,6 +58,21 @@
       "message": "Lisa's tweet",
       "name": "lisa@simpson.com",
       "tweeter": "->users.lisa"
+    },
+    "six": {
+      "message": "1 Barts tweet",
+      "name": "bart@simpson.com",
+      "tweeter": "->users.bart"
+    },
+    "seven": {
+      "message": "2 Barts tweet",
+      "name": "bart@simpson.com",
+      "tweeter": "->users.bart"
+    },
+    "eight": {
+      "message": "3 Barts tweet",
+      "name": "bart@simpson.com",
+      "tweeter": "->users.bart"
     }
   }
 }

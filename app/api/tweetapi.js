@@ -18,15 +18,30 @@ exports.find = {
   },
 };
 
+exports.findTweetById= {
+  auth: false,
+  handler: function (req, res) {
+    console.log("do i enter findTweetById");
+    Tweet.findOne({_id: req.params.id}).then(tweet => {
+      if(!tweet){
+        return res.status(404);
+      }
+      res(tweet);
+      }).catch(err => {
+      res(Boom.notFound('id not found'));
+    });
+  },
+};
+
 
 exports.findUserTweetById = {
   auth: false,
 
   handler: function (req, res) {
-    console.log(req.name);
+    console.log("do i enter findUserTweetById");
     Tweet.find({tweeter: req.params.id}).then(tweets => {
       console.log(tweets);
-      res(tweets);
+      return res(tweets);
     }).catch(err => {
       res(Boom.badImplemetation('error accessing Mongo db'));
     });
