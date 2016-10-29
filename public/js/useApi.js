@@ -13,19 +13,26 @@ function deleteUser(){
     type: 'DELETE',
 
     success: function (data){
-      console.log('Success');
+      console.log('Success removed : '+ email);
       console.log(data);
-
+      refreshlist(email)
     },
     error: function(err){
       console.log('fail');
       console.log(err.statusText);
     }
   });
-  $('#deleteUser').dropdown('clear');
-
-
-
+  function refreshlist(email) {
+    let $obj = $('.item.userlist');
+    for (let i = 0; i < $obj.length; i += 1) {
+      console.log('dropdown loop number :' + i);
+      if ($obj[i].getAttribute('data-value').localeCompare(email) === 0) {
+        $obj[i].remove();
+        $('#deleteUser').dropdown('clear');
+        break;
+      }
+    }
+  };
 }
 /**
  * Clears the table data
