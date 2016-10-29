@@ -4,6 +4,7 @@
 'use strict';
 
 const Tweet = require('../models/tweet');
+const User = require('../models/user')
 const Boom = require('boom');
 
 exports.find = {
@@ -33,6 +34,57 @@ exports.findTweetById= {
   },
 };
 
+//counting number of tweets function
+function counting(tweets, email ,count) {
+  let i = 0;
+  while (i < tweets.length){
+  //for (var i = 0; i < tweets.length; i++) {
+    if (tweets[i].name === email ) {
+      count ++;
+
+    }
+    i++;
+  }
+  return count;
+};
+
+
+//API to return an array[{email:value, count:value},{...etc}]
+
+exports.findUserTweetCount = {
+  auth:false,
+
+  handler: function(req, res) {
+    const tweetCount = [];
+    let count = 0 ;
+    let exists;
+    Tweet.find({}).exec().then(tweets => {
+      console.log('\ntweets : '+ tweets);
+      for(let i = 0; i< tweets.length;i++) {
+        let email = tweets[i].name;
+        console.log('\nemail :' + email);
+        count = counting(tweets, email, count);
+        console.log('\ncount :' + count);
+        //check to see if email exists in new object tweetCount, if it does don't add obj
+        for (var j = 0; j < tweetCount.length; j++){
+          if(tweetCount[j].email === email){
+             exists = true;
+          }
+        }
+        if (count > 1 && exists ){
+          console.log('dont push');
+        } else {
+          tweetCount.push({email, count});
+          count = 0;
+          exists = false;
+        }
+        console.log('\ntweetCount array : ' + tweetCount);
+      }
+      return res(tweetCount);
+      });
+
+    }
+  }
 
 exports.findUserTweetById = {
   auth: false,
@@ -79,11 +131,4 @@ exports.delete = {
   }
 };
 
-/*exports.deleteAll = {
-  auth: false,
-  handler: function(req, res){
-    Tweet.find({}).exec().then(tweets => {
 
-    }
-
-}*/

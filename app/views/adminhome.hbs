@@ -10,13 +10,13 @@
 
 
 <div class="ui grid">
-    <section class="two column row">
+    <section class="three column row">
 
         <div class="column">
             <h3 class="ui dividing header">Register new User</h3>
             <section class="ui raised segment">
-                <div class="ui grid">
-                    <div class="ui ten wide column">
+                <!--<div class="ui grid">-->
+                    <div class="ui six wide column">
                         <div class="ui stacked fluid form segment">
                             <form action="/register" method="POST">
                                 <h3 class="ui header">Register</h3>
@@ -42,12 +42,25 @@
                             </form>
                             {{> formerror }}
                         </div>
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
 
+        <div class="six wide column">
+            <section class="ui  segment">
+                <div class="ui segment">
+                    <div id="chartContainer" style="height: 220px; width: 100%;"></div>
+                </div>
+                <div class="ui segment">
+                    <button class="ui blue button" type="button" onclick="chartPie()"><i class="pie chart icon"></i>Pie Chart</button>
+                    <button class="ui blue button" type="button" onclick="chartColume()"><i class="bar chart icon"></i>Column Chart</button>
+                    <button class="ui blue button" type="button" onclick="chartSpline()"><i class="line chart icon"></i>Line Chart</button>
+                    <button class="ui blue button" type="button" onclick="reloadPie()"><i class="refresh icon"></i>reload</button>
+                </div>
+            </section>
+        </div>
 
-        <section class="column">
+        <section class="four wide column">
             <h3 class="ui dividing header">Delete User</h3>
             <section class="ui rasied form segment user">
                 <div class="two fields">
@@ -68,8 +81,8 @@
                 </div>
                 <button class="ui blue submit button" onclick="deleteUser()">Delete User <i class="trash icon"></i></button>
         </section>
+        </section>
 
-    </section>
     </section>
 </div>
 
@@ -126,3 +139,5 @@
 </section>
 <script src="js/checkbox.js"></script>
 <script src="js/useApi.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/canvasjs.min.js"></script>
