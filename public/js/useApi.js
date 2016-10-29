@@ -2,6 +2,31 @@
  * Created by austin on 20/10/2016.
  */
 
+$('#deleteUser').dropdown();
+
+function deleteUser(){
+  var email = $('#deleteUser').dropdown('get text');
+  console.log("user : "+ email);
+  $.ajax({
+    dataType: 'json',
+    url: 'http://lap-austin:4000/api/users/email/' + email,
+    type: 'DELETE',
+
+    success: function (data){
+      console.log('Success');
+      console.log(data);
+
+    },
+    error: function(err){
+      console.log('fail');
+      console.log(err.statusText);
+    }
+  });
+  $('#deleteUser').dropdown('clear');
+
+
+
+}
 /**
  * Clears the table data
  */
@@ -28,16 +53,15 @@ function searchUserTweets(){
       url: 'http://lap-austin:4000/api/tweets/email/' + email,
 
       success: function (data) {
+        clearTable();
         console.log('success');
         console.log(data);
-        //updateResult(data.length + ' repos');
         populateTable(data);
       },
 
       error: function (err) {
         console.log('fail');
         console.log(err.statusText);
-        //updateResult(userName + ' ' + err.statusText);
       },
 
     });
@@ -45,12 +69,9 @@ function searchUserTweets(){
 
 function delSelectedTweets(){
   var id ;
-  //id = $('.delCheck:checked').val();
-  //id = document.querySelector('.delCheck:checked').value;
   id = document.getElementsByClassName('delCheck');
-  //id = $('#checkbox').is('checked');
   console.log("id content message "+id);
-  console.log("do i get here")
+  console.log("do i get here");
 
     for (let i = 0; i < id.length; i++) {
       if (id[i].checked) {
@@ -70,7 +91,6 @@ function delSelectedTweets(){
           error: function (err) {
             console.log('fail');
             console.log(err.statusText);
-            //updateResult(userName + ' ' + err.statusText);
         },
       });
     }

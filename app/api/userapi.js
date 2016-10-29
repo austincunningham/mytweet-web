@@ -62,3 +62,18 @@ exports.findUserByEmail = {
     });
   },
 };
+
+exports.DeleteUserByEmail = {
+  auth: false,
+
+  handler: function (req, res) {
+    console.log("email.params"+req.params.email);
+    console.log('do i get here?')
+    User.findOneAndRemove({email: req.params.email}).then(user => {
+      console.log(user.firstName);
+      res(user);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
+    });
+  },
+};
