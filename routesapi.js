@@ -18,6 +18,7 @@ module.exports = [
   { method: 'GET', path:'/api/tweets/{id}', config:TweetApi.findUserTweetById },
   { method: 'GET', path:'/api/tweets/email/{email}', config:TweetApi.findUserTweetByEmail },
   { method: 'DELETE', path:'/api/tweets/{id}', config:TweetApi.delete },
+  { method: 'DELETE', path:'/api/tweets/email/{email}', config:TweetApi.deleteTweetsByEmail },
   { method: 'GET', path:'/api/tweetcount/', config:TweetApi.findUserTweetCount },
 
 ]

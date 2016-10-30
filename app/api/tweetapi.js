@@ -123,7 +123,7 @@ exports.delete = {
   handler: function(req, res) {
     Tweet.findOneAndRemove({ _id: req.params.id }, function (err, tweet) {
       if (err) {
-        return (Boom.resbadImplemetation('error accessing Mongo db'));
+        return res(Boom.badImplemetation('error accessing Mongo db'));
       }
 
       if (!tweet) {
@@ -135,4 +135,20 @@ exports.delete = {
   }
 };
 
+exports.deleteTweetsByEmail = {
+  auth: false,
+  handler: function(req, res) {
+    Tweet.findOneAndRemove({ name: req.params.email }, function (err, tweet) {
+      if (err) {
+        return res('error accessing Mongo db'+err);
+      }
+
+      if (!tweet) {
+        res('id not found');
+      }
+
+      res(tweet);
+    });
+  }
+};
 

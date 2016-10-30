@@ -18,7 +18,7 @@ window.onload = function () {
                 },
               ],
             });
-
+        //host name will have to change with new hosting on heroku
         $(function loadChartData() {
            $.ajax({
             dataType: 'json',
@@ -103,7 +103,7 @@ function loadChart(chartType) {
           },
         ],
       });
-
+//host name will have to change with new hosting
   $(function loadChartData() {
     $.ajax({
       dataType: 'json',

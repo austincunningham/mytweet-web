@@ -4,8 +4,12 @@
 
 $('#deleteUser').dropdown();
 
+//Host name will have be changed in URL if hosted elsewhere like Heroku
+//may be a way to setup relative path
+
+//deletes a user from the dropdown list
 function deleteUser(){
-  var email = $('#deleteUser').dropdown('get text');
+  var email =$('#deleteUser').dropdown('get text');
   console.log("user : "+ email);
   $.ajax({
     dataType: 'json',
@@ -22,6 +26,22 @@ function deleteUser(){
       console.log(err.statusText);
     }
   });
+  var del= $.ajax({
+    dataType: 'json',
+    url: 'http://lap-austin:4000/api/tweets/email/' + email,
+    type: 'DELETE',
+
+    success: function (data){
+      console.log('Success removed users tweets : '+ email);
+      console.log(data);
+    },
+    error: function(err){
+      console.log('fail');
+      console.log(err.statusText);
+    }
+  });
+  del.abort();//forcing ajax to abort if no tweets exist
+
   function refreshlist(email) {
     let $obj = $('.item.userlist');
     for (let i = 0; i < $obj.length; i += 1) {
@@ -50,8 +70,7 @@ function populateTable(tweetList) {
   }
 }
 
- // $('#search-btn').click(function () {
-   // var userName = $('.search-input').val();
+//searches for a users tweets by email
 function searchUserTweets(){
   var email = $('.search-input').val();
     console.log(email);
@@ -74,6 +93,7 @@ function searchUserTweets(){
     });
   };
 
+// delete tweets by id
 function delSelectedTweets(){
   var id ;
   id = document.getElementsByClassName('delCheck');
@@ -103,7 +123,7 @@ function delSelectedTweets(){
     }
   }
 
-  //
+  //find tweets by user id
   var tweetList = [];
   console.log("there should still be id : " + id);
   for (let i = 0; i < id.length; i++) {
