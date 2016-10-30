@@ -69,9 +69,13 @@ exports.findUserTweetCount = {
         for (var j = 0; j < tweetCount.length; j++){
           if(tweetCount[j].email === email){
              exists = true;
+             count = 0;
+             break;
+          }else{
+            exists = false;
           }
         }
-        if (count > 1 && exists ){
+        if ( exists ){
           console.log('dont push');
         } else {
           tweetCount.push({email, count});

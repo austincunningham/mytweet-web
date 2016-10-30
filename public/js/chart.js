@@ -105,7 +105,6 @@ function loadChart(chartType) {
       });
 
   $(function loadChartData() {
-
     $.ajax({
       dataType: 'json',
       url: 'http://lap-austin:4000/api/tweetcount/',
