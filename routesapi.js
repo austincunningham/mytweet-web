@@ -11,7 +11,7 @@ module.exports = [
   { method: 'DELETE', path:'/api/users/{id}', config:UserApi.delete },
   { method: 'GET', path:'/api/users/email/{email}', config:UserApi.findUserByEmail },
   { method: 'DELETE', path:'/api/users/email/{email}', config:UserApi.DeleteUserByEmail },
-  { method: 'POST', path:'/api/users/register/{payload}', config:UserApi.register },
+  { method: 'POST', path:'/api/users/register', config:UserApi.register },
 
   { method: 'GET', path:'/api/tweets', config:TweetApi.find },
   { method: 'GET', path:'/api/tweet/{id}', config:TweetApi.findTweetById },

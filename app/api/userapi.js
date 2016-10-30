@@ -86,7 +86,7 @@ exports.register = {
       reply.redirect('/adminhome');
     }).catch(err => {
       //console.log(request.auth.credentials.loggedInUser);
-      reply.redirect('/');
+      reply(Boom.badImplementation('error creating user '));
     });
   },
 };

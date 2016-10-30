@@ -8,7 +8,7 @@ window.onload = function () {
         var chart = new CanvasJS.Chart('chartContainer',
             {
               title: {
-                text: '% Percentage Tweet count',
+                text: '% Percentage(Rounded) Tweet count',
               },
               data: [
                 {
