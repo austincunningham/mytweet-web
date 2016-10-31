@@ -131,6 +131,8 @@ exports.delete = {
       }
 
       res(tweet);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
     });
   }
 };
@@ -148,6 +150,8 @@ exports.deleteTweetsByEmail = {
       }
 
       res(tweet);
+    }).catch(err => {
+      res(Boom.badImplemetation('error accessing Mongo db'));
     });
   }
 };
