@@ -22,7 +22,7 @@ function deleteUser(){
       refreshlist(email)
     },
     error: function(err){
-      console.log('fail');
+      console.log('fail to remove' + email);
       console.log(err.statusText);
     }
   });
@@ -40,7 +40,7 @@ function deleteUser(){
       console.log(err.statusText);
     }
   });
-  del.abort();//forcing ajax to abort if no tweets exist
+  //del.abort();//forcing ajax to abort if no tweets exist
 
   function refreshlist(email) {
     let $obj = $('.item.userlist');
@@ -60,7 +60,7 @@ function deleteUser(){
 function clearTable() {
   document.getElementById('tablebody').innerHTML = '';
 }
-
+//populates the table with data
 function populateTable(tweetList) {
   for (var i = 0; i < tweetList.length; i++) {
     $('.tablebody ').append('<tr><td><b>' + tweetList[i].name + '</b>  </td><td>'
@@ -95,12 +95,13 @@ function searchUserTweets(){
 
 // delete tweets by id
 function delSelectedTweets(){
+
   var id ;
   id = document.getElementsByClassName('delCheck');
   console.log("id content message "+id);
   console.log("do i get here");
 
-    for (let i = 0; i < id.length; i++) {
+  for (let i = 0; i < id.length; i++) {
       if (id[i].checked) {
         console.log ("should be true "+ id[i].checked);
         console.log("should be an id "+ id[i].value);
@@ -127,7 +128,7 @@ function delSelectedTweets(){
   var tweetList = [];
   console.log("there should still be id : " + id);
   for (let i = 0; i < id.length; i++) {
-    console.log("this should be false " + id[i].checked)
+    console.log("this should be false " + id[i].checked);
     $.ajax({
       dataType: 'json',
       url: 'http://lap-austin:4000/api/tweet/' + id[i].value,
@@ -142,6 +143,11 @@ function delSelectedTweets(){
         console.log(data);
       },
       error: function (err) {
+        //edge case only hits when removing the last tweet
+        if (tweetList.length === 0) {
+          clearTable();
+          populateTable(tweetList);
+        }
         console.log(err.statusText);
       }
 

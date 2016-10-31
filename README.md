@@ -1,12 +1,20 @@
-# README #
+# README MyTweet#
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Quick summary this is a web app built with Node JS which mimics the functionality of Twitter 
+* User can signup, Login. 
+* User can Add Tweets, delete one or many tweets of there own tweets.
+* User can search for other users tweets and look at all tweets
+* User: homer@simpson.com
+  Password : secret
+* Admin can add and delete users, remove users tweets and look at stats
+  Admin: admin@mytweet.com
+  Password : secret
+* Version MyTweet-v18
+* [Live version AWS-EC2] (http://35.160.157.123:4000/)
+* [Live version Heroku Pre-Themeing Version] (https://mytweet-web-austin.herokuapp.com/)
 
 ### How do I get set up? ###
 
