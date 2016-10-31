@@ -37,6 +37,7 @@ function deleteUser(){
     },
     error: function(err){
       console.log('fail');
+
       //console.log(err.statusText);
     }
   });

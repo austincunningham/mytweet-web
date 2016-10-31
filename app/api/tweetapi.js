@@ -145,11 +145,11 @@ exports.deleteTweetsByEmail = {
         return res('error accessing Mongo db'+err);
       }
 
-      if (!tweet) {
-        res('id not found');
+      if (!tweet || tweet === null || tweet === undefined) {
+        return res('id not found');
       }
 
-      res(tweet);
+      return res(tweet);
     }).catch(err => {
       res(Boom.badImplemetation('error accessing Mongo db'));
     });
