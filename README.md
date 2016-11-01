@@ -16,7 +16,7 @@
 * [Local version] (http://localhost:4000/
 * [Live version AWS-EC2] (http://35.160.157.123:4000/)
 * [Live version Heroku Pre-Themeing Version] (https://mytweet-web-austin.herokuapp.com/)
-* [Live version HyperDev] (https://hyperDev/whatever)
+* [Live version HyperDev Pre-Themeing Version] (https://fast-yard.hyperdev.space)
 
 ### How do I get set up? ###
 
