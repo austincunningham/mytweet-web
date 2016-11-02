@@ -22,7 +22,7 @@ window.onload = function () {
         $(function loadChartData() {
            $.ajax({
             dataType: 'json',
-            url: 'http://localhost:4000/api/tweetcount/',
+            url: 'https://mytweet-web-austin.herokuapp.com/api/tweetcount/',
             type: "GET",
 
             success(data){
@@ -107,7 +107,7 @@ function loadChart(chartType) {
   $(function loadChartData() {
     $.ajax({
       dataType: 'json',
-      url: 'http://localhost:4000/api/tweetcount/',
+      url: 'https://mytweet-web-austin.herokuapp.com/api/tweetcount/',
       type: "GET",
 
       success(data){

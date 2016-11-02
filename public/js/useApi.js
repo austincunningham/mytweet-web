@@ -13,7 +13,7 @@ function deleteUser(){
   console.log("user : "+ email);
   $.ajax({
     dataType: 'json',
-    url: 'http://localhost:4000/api/users/email/' + email,
+    url: 'https://mytweet-web-austin.herokuapp.com/api/users/email/' + email,
     type: 'DELETE',
 
     success: function (data){
@@ -28,7 +28,7 @@ function deleteUser(){
   });
   var del= $.ajax({
     dataType: 'json',
-    url: 'http://localhost:4000/api/tweets/email/' + email,
+    url: 'https://mytweet-web-austin.herokuapp.com/api/tweets/email/' + email,
     type: 'DELETE',
 
     success: function (data){
@@ -77,7 +77,7 @@ function searchUserTweets(){
     console.log(email);
     $.ajax({
       dataType: 'json',
-      url: 'http://localhost:4000/api/tweets/email/' + email,
+      url: 'https://mytweet-web-austin.herokuapp.com/api/tweets/email/' + email,
 
       success: function (data) {
         clearTable();
@@ -108,7 +108,7 @@ function delSelectedTweets(){
         console.log("should be an id "+ id[i].value);
         $.ajax({
           dataType: 'json',
-          url: 'http://localhost:4000/api/tweets/' + id[i].value,
+          url: 'https://mytweet-web-austin.herokuapp.com/api/tweets/' + id[i].value,
           type: "DELETE",
 
           success: function (data) {
@@ -132,7 +132,7 @@ function delSelectedTweets(){
     console.log("this should be false " + id[i].checked);
     $.ajax({
       dataType: 'json',
-      url: 'http://localhost:4000/api/tweet/' + id[i].value,
+      url: 'https://mytweet-web-austin.herokuapp.com/api/tweet/' + id[i].value,
       type: "GET",
 
       success(data){
