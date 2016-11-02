@@ -22,10 +22,8 @@
 ### How do I get set up? ###
 
 * Summary of set up, git clone https://austincunningham@bitbucket.org/austincunningham/mytweet-web.git
-  'cd mytweet-web/' and run 'npm install' and 'node index' to start the server
-* Configuration if plainning make live on the web this you will need to change all references in 
-(/public/js/chart.js , public/js/useAPI.js)from 'localhost' to your publicly visible host name.   
-* Dependencies node js, npm and mongoDB
+  'cd mytweet-web/' and run 'npm install' and 'node index' to start the server  
+* Dependencies Node js, npm and MongoDB
 * Database configuration current config is pointing to locally hosted mongo DB , you can change reference in 
 '/app/models/db.js' to select mlabs by uncommenting line 10
  ```javascript
