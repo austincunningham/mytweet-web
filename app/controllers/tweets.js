@@ -3,6 +3,7 @@ const Tweet = require('../models/tweet');
 const User = require('../models/user');
 const Joi = require('joi');
 
+//route to render view
 exports.home = {
 
   handler: function (request, reply) {
@@ -11,6 +12,7 @@ exports.home = {
 
 };
 
+// submit a tweet , validation restricts to 140 characters
 exports.submit = {
 
   validate: {
@@ -45,6 +47,7 @@ exports.submit = {
   },
 }
 
+//find all tweets and render
 exports.report = {
   auth: false,
   handler: function (request, reply) {
@@ -61,6 +64,8 @@ exports.report = {
 
 
 };
+
+//find the tweets by the loggedInUserEmail
 exports.mytweetlist = {
 
   handler: function (request, reply) {
@@ -77,6 +82,7 @@ exports.mytweetlist = {
   },
 };
 
+//route to render view finduser
 exports.finduser = {
 
   handler: function (request, reply) {
@@ -85,6 +91,7 @@ exports.finduser = {
 
 };
 
+//find all tweet by users email address
 exports.findusersearch = {
 
   handler: function (request, reply) {
@@ -102,7 +109,7 @@ exports.findusersearch = {
     },
 };
 
-
+// delete tweet by id
 exports.delete = {
   handler: function (req, res) {
     for (let i = 0; i < Object.keys(req.payload).length; i++) {

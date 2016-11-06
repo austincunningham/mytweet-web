@@ -6,7 +6,7 @@ const User = require('../models/user');
 const Tweet = require('../models/tweet');
 const Joi = require('joi');
 
-
+//default render for /
 exports.main = {
   auth: false,
   handler: function (request, reply) {
@@ -15,6 +15,7 @@ exports.main = {
 
 };
 
+//route to administrator home, only admin can login
 exports.adminhome = {
   handler: function (request, reply) {
     if (request.auth.credentials.loggedInUser == 'admin@mytweet.com') {
@@ -30,6 +31,7 @@ exports.adminhome = {
   },
 };
 
+//upload picture to mongodb
 exports.userPicUpload = {
   payload: {
     maxBytes: 209715200,
@@ -50,6 +52,7 @@ exports.userPicUpload = {
   }
 }
 
+// render picture from database
 exports.getUserPic = {
   handler : function (req ,res) {
     //console.log(req.payload);
@@ -61,6 +64,7 @@ exports.getUserPic = {
   }
 }
 
+//render pictures by user id
 exports.getUserPicId = {
   handler : function (req ,res) {
     console.log(req.params.id);
@@ -74,6 +78,7 @@ exports.getUserPicId = {
   }
 }
 
+//route to render signup
 exports.signup = {
   auth: false,
   handler: function (request, reply) {
@@ -115,6 +120,7 @@ exports.deleteUser ={
   }
 };
 
+//render login page
 exports.login = {
   auth: false,
   handler: function (request, reply) {
@@ -124,6 +130,7 @@ exports.login = {
   },
 };
 
+// authenticate users , will render user home, authenticate admin will render adminhome
 exports.authenticate = {
   validate: {
 
@@ -166,6 +173,7 @@ exports.authenticate = {
   },
 };
 
+//route to logout, render route /
 exports.logout = {
   auth: false,
   handler: function (request, reply) {
@@ -175,6 +183,7 @@ exports.logout = {
 
 };
 
+//add user to database , validation on form
 exports.register = {
   validate: {
 
@@ -205,6 +214,7 @@ exports.register = {
   },
 };
 
+//render current users in settings page
 exports.viewSettings = {
 
   handler: function (request, reply) {
@@ -218,6 +228,7 @@ exports.viewSettings = {
 
 };
 
+//update current users settings.
 exports.updateSettings = {
   validate: {
 

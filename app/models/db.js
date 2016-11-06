@@ -6,8 +6,8 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-//let dbURI = 'mongodb://localhost/myTweet';
-let dbURI= 'mongodb://mytweetuser:mytweetuser@ds057066.mlab.com:57066/mytweet';
+let dbURI = 'mongodb://localhost/myTweet';
+//let dbURI= 'mongodb://mytweetuser:mytweetuser@ds057066.mlab.com:57066/mytweet';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
@@ -15,6 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 
 mongoose.connect(dbURI);
 
+//seed the database with data from data.json
 mongoose.connection.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
   if (process.env.NODE_ENV != 'production') {

@@ -6,6 +6,7 @@
 const User = require('../models/user');
 const Boom = require('boom');
 
+//api to find all users
 exports.find = {
   auth: false,
 
@@ -18,6 +19,7 @@ exports.find = {
   },
 };
 
+//api to find a single user by id
 exports.findOne = {
   auth: false,
   handler: function(req, res) {
@@ -32,6 +34,7 @@ exports.findOne = {
   },
 };
 
+//api delete a single user by id
 exports.delete = {
   auth: false,
   handler: function(req, res) {
@@ -49,6 +52,7 @@ exports.delete = {
   }
 }
 
+//api find user by email
 exports.findUserByEmail = {
   auth: false,
 
@@ -63,6 +67,7 @@ exports.findUserByEmail = {
   },
 };
 
+//api find user by email and delete
 exports.DeleteUserByEmail = {
   auth: false,
 
@@ -78,6 +83,7 @@ exports.DeleteUserByEmail = {
   },
 };
 
+//api add new user
 exports.register = {
   auth: false,
   handler: function (request, reply) {

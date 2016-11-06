@@ -7,6 +7,7 @@ const Tweet = require('../models/tweet');
 const User = require('../models/user')
 const Boom = require('boom');
 
+//api find all tweets
 exports.find = {
   auth: false,
 
@@ -19,6 +20,7 @@ exports.find = {
   },
 };
 
+//api find a tweet by id
 exports.findTweetById= {
   auth: false,
   handler: function (req, res) {
@@ -50,7 +52,6 @@ function counting(tweets, email ,count) {
 
 
 //API to return an array[{email:value, count:value},{...etc}]
-
 exports.findUserTweetCount = {
   auth:false,
 
@@ -90,6 +91,7 @@ exports.findUserTweetCount = {
     }
   }
 
+//api find a tweet by the user id
 exports.findUserTweetById = {
   auth: false,
 
@@ -104,7 +106,7 @@ exports.findUserTweetById = {
   },
 };
 
-
+// api find tweets by users email
 exports.findUserTweetByEmail = {
   auth: false,
 
@@ -117,7 +119,7 @@ exports.findUserTweetByEmail = {
   },
 };
 
-
+// api find tweet by id and delete
 exports.delete = {
   auth: false,
   handler: function(req, res) {
@@ -137,6 +139,7 @@ exports.delete = {
   }
 };
 
+// api find tweets by email and delete
 exports.deleteTweetsByEmail = {
   auth: false,
   handler: function(req, res) {
