@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "austin cunningham",
   "license": "ISC",
@@ -23,6 +25,8 @@
     "mongoose": "^4.6.2",
     "mongoose-seeder": "^1.2.1",
     "semantic-ui": "^2.2.6",
-    "vision": "^4.1.0"
-  }
+    "vision": "^4.1.0",
+    "snyk": "^1.83.0"
+  },
+  "snyk": true
 }
