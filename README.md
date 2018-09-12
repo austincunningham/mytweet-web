@@ -1,4 +1,11 @@
-# README MyTweet #
+# MyTweet
+
+![mytweet](https://user-images.githubusercontent.com/16667688/45455001-90502800-b6dd-11e8-8928-aabb8db52a47.gif)
+
+College project to create a Node Web App using Hapi and also has an Api that can be consumed by an Android app and an Aurellia SPA 
+
+- Android repo : https://github.com/austincunningham/android-mytweet
+- Aurellia repo : https://github.com/austincunningham/mytweet-webdev-spa
 
 
 ### What is this repository for? ###
@@ -14,7 +21,9 @@
   Password : secret
 * [API documentation](API.md) 
 * Version MyTweet-v18
-* [Live version Heroku Pre-Themeing Version] (https://mytweet-web-austin.herokuapp.com/)
+* [Live version on Heroku] (https://mytweet-web-austin.herokuapp.com/)
+
+
 
 
 ### How do I get set up? ###
@@ -32,6 +41,4 @@ and commenting line 9
 'let dbURI = 'mongodb://localhost/myTweet';'
 ```
 
-### Who do I talk to? ###
 
-* Repo owner or admin austincunningham@oceanfree.net
