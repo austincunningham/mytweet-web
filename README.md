@@ -1,24 +1,28 @@
 # MyTweet
 
-![mytweet](https://user-images.githubusercontent.com/16667688/45455001-90502800-b6dd-11e8-8928-aabb8db52a47.gif)
-
-College project to create a Node Web App using Hapi and also has an Api that can be consumed by an Android app and an Aurellia SPA 
+College project to create a Node Web App using Hapi and also has an Api that can be consumed by an Android app and an Aurellia SPA. Meant to mimic some of the basic functionality of Twitter. 
 
 - Android repo : https://github.com/austincunningham/android-mytweet
 - Aurellia repo : https://github.com/austincunningham/mytweet-webdev-spa
 
+![mytweet](https://user-images.githubusercontent.com/16667688/45455001-90502800-b6dd-11e8-8928-aabb8db52a47.gif)
 
-### What is this repository for? ###
+
+## What is this repository for?
 
 * Quick summary this is a web app built with Node JS which mimics the functionality of Twitter 
 * User can signup, Login. 
 * User can Add Tweets, delete one or many of there own tweets.
 * User can search for other users tweets and look at all tweets
-* User: homer@simpson.com
-  Password : secret
+```
+    User: homer@simpson.com
+    Password : secret
+```    
 * Admin can add and delete users, remove users tweets and look at stats
+```
   Admin: admin@mytweet.com
   Password : secret
+  ```
 * [API documentation](API.md) 
 * Version MyTweet-v18
 * [Live version on Heroku] (https://mytweet-web-austin.herokuapp.com/)
